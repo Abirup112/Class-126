@@ -1,6 +1,6 @@
 song="";
 function preload(){
-    song=loadSound("Ben10AlienForce.mp3")
+    song=loadSound("Ben 10 Alien Force.mp3")
 }
 function setup(){
     canvas = createCanvas(600, 500);
