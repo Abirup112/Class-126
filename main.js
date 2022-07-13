@@ -3,8 +3,10 @@ leftWristX=0;
 leftWristY=0;
 rightWristX=0;
 rightWristY=0;
+scoreLeftWrist="";
+remove_decimals="";
 function preload(){
-    song=loadSound("Ben 10 Alien Force.mp3")
+    song=loadSound("Ben 10 Ultimate Alien.mp3")
 }
 function setup(){
     canvas = createCanvas(600, 500);
@@ -21,6 +23,8 @@ function modelLoaded(){
 function gotPoses(results){
     if(results.length > 0){
         console.log(results);
+        scoreLeftWrist=results[0].pose.keypoints[9].score;
+        console.log("scoreLeftWrist= "+scoreLeftWrist);
         leftWristX=results[0].pose.leftWrist.x;
         leftWristY=results[0].pose.leftWrist.y;
         console.log("leftWristX=" + leftWristX + "leftWristY=" + leftWristY);
@@ -32,6 +36,17 @@ function gotPoses(results){
 }
 function draw(){
     image(video, 0, 0, 600, 500);
+    fill("#00FF00");
+    stroke("#00FF00");
+   if(scoreLeftWrist>0.2){
+    circle(leftWristX, leftWristY, 20);
+    InNumberleftWristY=Number(leftWristY);
+    remove_decimals=floor(InNumberleftWristY);
+    volume=remove_decimals/500;
+    document.getElementById("volume").innerHTML="Volume= "+volume;
+    song.setVolume(volume);
+   }
+    
 }
 
 function play(){
