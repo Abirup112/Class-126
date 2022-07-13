@@ -3,10 +3,9 @@ leftWristX=0;
 leftWristY=0;
 rightWristX=0;
 rightWristY=0;
-scoreLeftWrist="";
-remove_decimals="";
+
 function preload(){
-    song=loadSound("Ben 10 Ultimate Alien.mp3")
+    song=loadSound("Ben10 Ultimate Alien.mp3")
 }
 function setup(){
     canvas = createCanvas(600, 500);
@@ -29,7 +28,7 @@ function gotPoses(results){
         leftWristY=results[0].pose.leftWrist.y;
         console.log("leftWristX=" + leftWristX + "leftWristY=" + leftWristY);
 
-        rightWristX=results[0].pose.rightWrist.y;
+        rightWristX=results[0].pose.rightWrist.x;
         rightWristY=results[0].pose.rightWrist.y;
         console.log("rightWristX=" + rightWristX + "rightWristY=" + rightWristY);
     }
